@@ -6,9 +6,9 @@ function weighData(data) {
   let starters = {};
   
   for (let i = 0; i < data.length; i++) {
-    // let passage = data[i].split(' ');
-    let passage = data[i].match(/(\S+ \S+)|(\S+ \S+)(?= *\n|$)|\S+/g);
-    
+    let passage = data[i].split(' ');
+    // let passage = data[i].match(/(\S+ \S+)|(\S+ \S+)(?= *\n|$)|\S+/g);
+
     if (starters[passage[0]] === undefined) {
       starters[passage[0]] = [passage[1]];
     } else {
@@ -26,7 +26,7 @@ function weighData(data) {
       }
     }
   }
-  console.log(`${starters['What do']}`);
+
   return {starters, words};
 }
 
@@ -40,6 +40,7 @@ function createNewSentence(starters, words) {
   while(words[currentWord] !== undefined) {
     /* currentWord = randomWord(words[currentWord]); */
     let nextWord = randomWord(words[currentWord]);
+    // console.log(words[currentWord]);
     
      if (nextWord[nextWord.length - 1] === '?' && newSentence.includes('?')) {
       while (nextWord[nextWord.length - 1] === '?') {
@@ -63,4 +64,20 @@ function markov(data) {
   return createNewSentence(starters, words);
 }
 
-module.exports = markov;
+function getJokes(page = 0) {
+  return axios({
+    method: 'GET',
+    url: 'https://icanhazdadjoke.com/search',
+    headers: {
+      'User-Agent': `${process.env.USER_AGENT}`,
+      'Accept': 'application/json',
+    },
+    params: {
+      'limit': 30,
+      'page': page,
+    },
+  });
+}
+
+module.exports.markov = markov;
+module.exports.getJokes = getJokes;
