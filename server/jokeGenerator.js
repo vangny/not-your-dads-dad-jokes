@@ -50,7 +50,7 @@ function createNewSentence(starters, words) {
     newSentence += ` ${currentWord}`;
   }
 
-  console.log(newSentence);
+  return newSentence;
 }
 
 function randomWord(words) {
@@ -59,27 +59,30 @@ function randomWord(words) {
 
 function markov(data) {
   let { starters, words } = weighData(data);
-
-  createNewSentence(starters, words);
+  return createNewSentence(starters, words);
 }
 
-function generateJokes() {
-  let randomPage = Math.floor(Math.random() * 18)
+// function generateJokes() {
+//   let randomPage = Math.floor(Math.random() * 18);
 
-  axios({
-    method: 'GET',
-    url: 'https://icanhazdadjoke.com/search',
-    headers: {
-      'User-Agent': `${process.env.USER_AGENT}`,
-      'Accept': 'application/json',
-      'limit': 30,
-      'current_page': randomPage,
-    },
-  })
-  .then((data) => {
-    let jokes = data.data.results.map((joke) => joke.joke);
-    return markov(jokes);
-  });
-}
+//   axios({
+//     method: 'GET',
+//     url: 'https://icanhazdadjoke.com/search',
+//     headers: {
+//       'User-Agent': `${process.env.USER_AGENT}`,
+//       'Accept': 'application/json',
+//     },
+//     params: {
+//       'limit': 30,
+//       'page': randomPage,
+//     },
+//   })
+//   .then((data) => {
+//     let jokes = data.data.results.map((joke) => joke.joke);
+//     console.log(jokes)
+//     return markov(jokes);
+//   });
+// }
 
-module.exports = generateJokes;
+// module.exports = generateJokes;
+module.exports = markov;
