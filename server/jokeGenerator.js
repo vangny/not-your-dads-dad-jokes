@@ -6,7 +6,8 @@ function weighData(data) {
   let starters = {};
   
   for (let i = 0; i < data.length; i++) {
-    let passage = data[i].split(' ');
+    // let passage = data[i].split(' ');
+    let passage = data[i].match(/(\S+ \S+)|(\S+ \S+)(?= *\n|$)|\S+/g);
     
     if (starters[passage[0]] === undefined) {
       starters[passage[0]] = [passage[1]];
@@ -25,7 +26,7 @@ function weighData(data) {
       }
     }
   }
-
+  console.log(`${starters['What do']}`);
   return {starters, words};
 }
 
