@@ -10,8 +10,8 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: false}));
 
 app.get('/api/dad-jokes', (req, res) => {
-  let randomPage = Math.floor(Math.random() * 18);
-
+  let randomPage = Math.floor(Math.random() * 12);
+  let jokes = [];
   axios({
     method: 'GET',
     url: 'https://icanhazdadjoke.com/search',
@@ -25,7 +25,8 @@ app.get('/api/dad-jokes', (req, res) => {
     },
   })
   .then((data) => {
-    let jokes = data.data.results.map((joke) => joke.joke);
+    // let jokes = data.data.results.map((joke) => joke.joke);
+    data.data.results.forEach((joke) => jokes.push(joke.joke));
     // console.log(jokes)
     res.send(markov(jokes));
   });
