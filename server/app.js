@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 
-const app = expess();
+const app = express();
 
 app.use(express.static(`${__dirname}/../client/dist`));
 app.use(bodyparser.json());
