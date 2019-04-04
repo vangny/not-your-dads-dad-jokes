@@ -9,8 +9,8 @@ class App extends Component {
   }
 
   getNewJoke() {
-    axios.get('/api/dad-jokes');
-    // console.log('hi');
+    axios.get('/api/dad-jokes')
+      .then((response) => console.log(response.data));
   }
 
   render() {
