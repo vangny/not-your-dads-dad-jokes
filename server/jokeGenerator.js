@@ -62,27 +62,4 @@ function markov(data) {
   return createNewSentence(starters, words);
 }
 
-// function generateJokes() {
-//   let randomPage = Math.floor(Math.random() * 18);
-
-//   axios({
-//     method: 'GET',
-//     url: 'https://icanhazdadjoke.com/search',
-//     headers: {
-//       'User-Agent': `${process.env.USER_AGENT}`,
-//       'Accept': 'application/json',
-//     },
-//     params: {
-//       'limit': 30,
-//       'page': randomPage,
-//     },
-//   })
-//   .then((data) => {
-//     let jokes = data.data.results.map((joke) => joke.joke);
-//     console.log(jokes)
-//     return markov(jokes);
-//   });
-// }
-
-// module.exports = generateJokes;
 module.exports = markov;
