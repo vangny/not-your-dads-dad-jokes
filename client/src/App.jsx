@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.getNewJoke}>Hi World</button>
+        <button onClick={this.getNewJoke}>New Joke</button>
       </div>
     );
   }
