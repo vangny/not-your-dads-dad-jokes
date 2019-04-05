@@ -81,7 +81,6 @@ module.exports = (env) => {
 
     config.devServer = {
       contentBase: DIST_DIR,
-      historyAPIFallback: false,
     };
   }
 
