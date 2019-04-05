@@ -14,22 +14,13 @@ app.get('/api/dad-jokes', (req, res) => {
   let jokes = [];
   axios.all([getJokes(randomPage), getJokes(randomPage + 1), getJokes(randomPage + 2), getJokes(randomPage + 3), getJokes(randomPage + 4)])
     .then(axios.spread((firstSet, secondSet, thirdSet, fourthSet, fifthSet) => {
-      firstSet.data.results.forEach((joke) => jokes.push(joke.joke));
-      secondSet.data.results.forEach((joke) => jokes.push(joke.joke));
-      thirdSet.data.results.forEach((joke) => jokes.push(joke.joke));
-      fourthSet.data.results.forEach((joke) => jokes.push(joke.joke));
-      fifthSet.data.results.forEach((joke) => jokes.push(joke.joke));
-      // console.log(jokes);
+      firstSet.data.results.forEach((joke) => jokes.push(joke.joke.replace(/['"]+/g, '')));
+      secondSet.data.results.forEach((joke) => jokes.push(joke.joke.replace(/['"]+/g, '')));
+      thirdSet.data.results.forEach((joke) => jokes.push(joke.joke.replace(/['"]+/g, '')));
+      fourthSet.data.results.forEach((joke) => jokes.push(joke.joke.replace(/['"]+/g, '')));
+      fifthSet.data.results.forEach((joke) => jokes.push(joke.joke.replace(/['"]+/g, '')));
       res.send(markov(jokes));
     }));
-
-
-  // .then((data) => {
-  //   // let jokes = data.data.results.map((joke) => joke.joke);
-  //   data.data.results.forEach((joke) => jokes.push(joke.joke));
-  //   // console.log(jokes)
-  //   res.send(markov(jokes));
-  // });
 })
 
 module.exports = app;
