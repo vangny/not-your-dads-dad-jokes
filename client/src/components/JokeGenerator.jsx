@@ -17,6 +17,16 @@ class JokeGenerator extends Component {
       .then((response) => {
         this.setState({
           joke: response.data,
+        }, () => {
+          const { joke } = this.state;
+          let jokes = JSON.parse(sessionStorage.getItem('jokes'));
+          if (!!jokes) {
+            jokes.push(joke);
+            sessionStorage.setItem('jokes', JSON.stringify(jokes));
+          } else {
+            let newJokes = [joke];
+            sessionStorage.setItem('jokes', JSON.stringify(newJokes))
+          }
         });
       });
   }
