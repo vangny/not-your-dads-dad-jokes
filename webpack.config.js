@@ -53,6 +53,13 @@ module.exports = (env) => {
           },
         ],
       },
+      {
+        test: /\.(png)$/i,
+        loaders: [
+          'file-loader',
+          'webp-loader'
+        ]
+      },
     ]
   };
 
