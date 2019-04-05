@@ -37,7 +37,7 @@ npm run build:dev
 npm run build:prod
 ```
 
-6. The webapp should be serverd locally on port 3030. If that port is already being used, you can change the port within the index.js file of the server folder
+6. The webapp should be serverd locally on port 3030. If that port is already being used, you can change the port within the main.js file of the server folder
 
 ## Future Additions
 * Convert app to a progressive web app
