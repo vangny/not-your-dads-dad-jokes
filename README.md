@@ -4,8 +4,8 @@ Not Your Dad's Dad Jokes
 Not Your Dad's Dad Jokes is a web app designed to generate new dad jokes from ICanHazDadJoke's library of dad jokes using a Markov Chain approach.
 
 ## Main Features
-*Create new dad jokes
-*Look into any previous dad jokes that were generated
+* Create new dad jokes
+* Look into any previous dad jokes that were generated
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
