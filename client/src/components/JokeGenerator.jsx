@@ -38,11 +38,11 @@ class JokeGenerator extends Component {
   render() {
     return (
       <div className='joke-container'>
-        <div className='text-container'>
+        <div className='joke-text-container'>
           {this.renderJoke()}
         </div>
-        <div className='button-container'>
-          <button className='button-generate-joke' onClick={this.getNewJoke}>Generate Joke</button>
+        <div className='joke-button-container'>
+          <button className='button-generate-joke' onClick={this.getNewJoke}>Generate A Joke</button>
         </div>
       </div>
     );
