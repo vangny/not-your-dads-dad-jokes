@@ -13,7 +13,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className='app-container'>
         {/* <button onClick={this.getNewJoke}>New Joke</button> */}
         <Navbar />
         <Router className='main-content'>

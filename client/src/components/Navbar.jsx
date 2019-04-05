@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Link } from '@reach/router';
+require('../styles/navbar.css');
 
 class Navbar extends Component {
   constructor(props) {

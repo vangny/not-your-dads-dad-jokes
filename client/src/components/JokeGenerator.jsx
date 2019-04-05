@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+require('../styles/generator.css');
 
 class JokeGenerator extends Component {
   constructor(props) {
@@ -36,14 +37,12 @@ class JokeGenerator extends Component {
 
   render() {
     return (
-      <div>
-        <div className='joke-container'>
-          <div className='text-container'>
-            {this.renderJoke()}
-          </div>
-          <div className='button-container'>
-            <button className='button-generate-joke' onClick={this.getNewJoke}>Generate Joke</button>
-          </div>
+      <div className='joke-container'>
+        <div className='text-container'>
+          {this.renderJoke()}
+        </div>
+        <div className='button-container'>
+          <button className='button-generate-joke' onClick={this.getNewJoke}>Generate Joke</button>
         </div>
       </div>
     );
