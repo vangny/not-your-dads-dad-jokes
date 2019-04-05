@@ -13,7 +13,7 @@ class History extends Component {
   }
 
   renderJokes() {
-    let jokes = JSON.parse(sessionStorage.getItem('jokes'));
+    let jokes = JSON.parse(localStorage.getItem('jokes'));
 
     if (!!jokes) {
       return (
