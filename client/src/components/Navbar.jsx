@@ -10,21 +10,21 @@ class Navbar extends Component {
   render() {
     return (
       <div className='navbar-container'>
-        <div className='nav-logo-container'>
-          <Link to='/'>
+        <Link className='nav-logo-container' to='/'>
+          <div>
             <span>NYD Dad Jokes</span>
-          </Link>
-        </div>
-        <div className='nav-home-container'>
-          <Link to='/'>
+          </div>
+        </Link>
+        <Link className='nav-home-container' to='/'>
+          <div>
             <span>Home</span>
-          </Link>
-        </div>
-        <div className='nav-history-container'>
-          <Link to='/history'>
+          </div>
+        </Link>
+        <Link className='nav-history-container' to='/history'>
+          <div>
             <span>History</span>
-          </Link>
-        </div>
+          </div> 
+        </Link>
       </div>
     );
   }
