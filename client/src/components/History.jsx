@@ -5,24 +5,32 @@ require('../styles/history.css')
 class History extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      cachedJokes: false,
+    };
+
     this.clearHistory = this.clearHistory.bind(this);
   }
 
   clearHistory() {
     localStorage.clear();
+    this.setState({
+      cachedJokes: false,
+    });
   }
 
   renderJokes() {
     let jokes = JSON.parse(localStorage.getItem('jokes'));
 
     if (!!jokes) {
+
       return (
         <div className='history-container not-empty'>
           <div className='history-jokes-container'>
             {jokes.map((joke) => <HistoryJoke joke={joke} />)}
           </div>
           <div className='history-button-container'>
-            <button className='button-clear-history'>Clear History</button>
+            <button className='button-clear-history' onClick={this.clearHistory}>Clear History</button>
           </div>
         </div>
         
