@@ -2,66 +2,58 @@ const axios = require('axios');
 require('dotenv').config();
 
 function weighData(data) {
-  let words = {};
-  let starters = {};
-  
+  let starters = [];
+  let phrases = {};
+
   for (let i = 0; i < data.length; i++) {
-    let passage = data[i].split(' ');
-    // let passage = data[i].match(/(\S+ \S+)|(\S+ \S+)(?= *\n|$)|\S+/g);
+    let passage = data[i].match(/(\S+ \S+)|(\S+ \S+)(?= *\n|$)|\S+/g);
 
-    if (starters[passage[0]] === undefined) {
-      starters[passage[0]] = [passage[1]];
-    } else {
-      starters[passage[0]].push(passage[1]);
+    if (!starters.includes(passage[0])) {
+      starters.push(passage[0]);
     }
-    
-    for (let j = 1; j < passage.length; j++) {
-      let currentWord = passage[j];
-      let nextWord = passage[j + 1];
 
-      if (words[currentWord] === undefined && nextWord !== undefined) {
-        words[currentWord] = [nextWord];
-      } else if (nextWord !== undefined) {
-        words[currentWord].push(nextWord);
+    for (let j = 0; j < passage.length; j++) {
+      let word = passage[j].split(' ')[1] || passage[j].split(' ')[0];
+      let currentPhrase = passage[j + 1];
+
+      if (phrases[word] === undefined && currentPhrase !== undefined) {
+        phrases[word] = [currentPhrase];
+      } else if (currentPhrase !== undefined) {
+        phrases[word].push(currentPhrase);
       }
     }
   }
 
-  return {starters, words};
+  return {starters, phrases};
 }
 
-function createNewSentence(starters, words) {
-  let intro = randomWord(Object.keys(starters));
-  // console.log(intro);
-  let currentWord = randomWord(starters[intro]);
-  // console.log(currentWord);
-  let newSentence = `${intro} ${currentWord}`;
 
-  while(words[currentWord] !== undefined) {
-    /* currentWord = randomWord(words[currentWord]); */
-    let nextWord = randomWord(words[currentWord]);
-    // console.log(words[currentWord]);
-    
-     if (nextWord[nextWord.length - 1] === '?' && newSentence.includes('?')) {
-      while (nextWord[nextWord.length - 1] === '?') {
-        nextWord = randomWord(words[currentWord]);
-      }
-    } 
-    
-    currentWord = nextWord;
-    newSentence += ` ${currentWord}`;
+function createNewSentence(starters, phrases) {
+  let intro = randomPhrase(starters);
+  let phrase = nextPhrase(phrases, intro.split(' ')[1]) || nextPhrase(phrases, intro.split(' ')[0]);
+  let word = phrase.split(' ')[1] || phrase.split(' ')[0];
+  let newSentence = `${intro} ${phrase}`;
+
+  while (phrases[word] !== undefined) {
+    phrase = nextPhrase(phrases, word)
+    word = phrase.split(' ')[1] || phrase.split(' ')[0];
+    newSentence += ` ${phrase}`;
   }
 
   return newSentence;
 }
 
-function randomWord(words) {
+function randomPhrase(words) {
   return words[Math.floor(Math.random() * words.length)];
 }
 
+function nextPhrase(phrases, previousWord) {
+  return randomPhrase(phrases[previousWord]);
+}
+
 function markov(data) {
-  let { starters, words } = weighData(data);
-  return createNewSentence(starters, words);
+  let { starters, phrases } = weighData(data);
+  return createNewSentence(starters, phrases);
 }
 
 function getJokes(page = 0) {
