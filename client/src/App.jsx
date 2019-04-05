@@ -14,8 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className='app-container'>
-        {/* <button onClick={this.getNewJoke}>New Joke</button> */}
-        <Navbar />
+        <Navbar className='navbar' />
         <Router className='main-content'>
           <JokeGenerator path='/' />
           <History path='/history' />
