@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+require('../styles/joke.css');
 
 class HistoryJoke extends Component {
   constructor(props) {
@@ -9,12 +10,10 @@ class HistoryJoke extends Component {
     const { joke } = this.props;
 
     return (
-      <div className='history-joke-container'>
-        <div className='history-joke-text-container'>
-          <span>
-            {joke}
-          </span>
-        </div>
+      <div className='history-joke-text-container'>
+        <span className='joke-text'>
+          {joke}
+        </span>
       </div>
     );
   }
