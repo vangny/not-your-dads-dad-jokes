@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import axios from 'axios';
+import { Router, Link } from '@reach/router';
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +17,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.getNewJoke}>New Joke</button>
+        {/* <button onClick={this.getNewJoke}>New Joke</button> */}
+        <div className='navbar-container'>
+          <span>Not Your Dad's Dad Jokes</span>
+        </div>
+        <Router className='main-content'>
+        
+        </Router>
       </div>
     );
   }
