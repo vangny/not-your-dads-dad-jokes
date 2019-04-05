@@ -2,10 +2,12 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const { getJokes, markov } = require('./jokeGenerator');
 const axios = require('axios');
+const expressStaticGzip = require('express-static-gzip');
 
 const app = express();
 
-app.use(express.static(`${__dirname}/../client/dist`));
+app.use('/', expressStaticGzip(`${__dirname}/../client/dist`));
+
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: false}));
 
