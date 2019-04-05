@@ -1,12 +1,38 @@
 .navbar-container {
   background-color: #ffffff;
+  
   display: grid;
-  grid-template-columns: 50px 70vw 1fr 1fr;
+  grid-template-columns: 35vw 40vw 1fr 1fr;
   grid-template-areas: 'logo . home history';
+}
+.nav-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 55px;
+  font-size: 1.25em;
 }
 
 .nav-logo-container {
   grid-area: logo;
+  color: #3a3a3a;
+}
+
+.nav-logo-container.nav-item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 1.5em;
+}
+
+.logo-img {
+  margin-right: 1em;
 }
 
 .nav-home-container {
@@ -15,4 +41,9 @@
 
 .nav-history-container {
   grid-area: history;
+}
+
+a {
+  text-decoration: none;
+  color: #7a7a7a;
 }
