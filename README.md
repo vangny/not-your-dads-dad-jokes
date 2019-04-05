@@ -10,7 +10,7 @@ Not Your Dad's Dad Jokes is a web app designed to generate new dad jokes from IC
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Installing
+### Installing & Setup
 1. Clone or download the repo
 
 ```
@@ -37,7 +37,9 @@ npm run build:dev
 npm run build:prod
 ```
 
-6. The webapp should be serverd locally on port 3030. If that port is already being used, you can change the port within the main.js file of the server folder
+6. Next, you will need to create a .env file and set USER_AGENT to the repo's url.
+
+7. The app should be defaulted to be hosted on port 3030. If that port is already being used, you can change the port within the main.js file of the server folder OR go into the .env file and assign PORT to a new port 
 
 ## Future Additions
 * Convert app to a progressive web app
