@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import axios from 'axios';
 import { Router, Link } from '@reach/router';
 import JokeGenerator from './components/JokeGenerator';
 import History from './components/History';
@@ -8,12 +7,6 @@ import History from './components/History';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.getNewJoke = this.getNewJoke.bind(this);
-  }
-
-  getNewJoke() {
-    axios.get('/api/dad-jokes')
-      .then((response) => console.log(response.data));
   }
 
   render() {
